@@ -1,0 +1,924 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-brand: #021E53;
+  --color-brand-light: #0A3070;
+  --color-brand-dark: #011435;
+  --color-gold: #FEAA05;
+  --color-gold-light: #FFC240;
+  --color-gold-dark: #D99000;
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: #FFFFFF;
+  --foreground: #0F172A;
+  --card: #FFFFFF;
+  --card-foreground: #0F172A;
+  --popover: #FFFFFF;
+  --popover-foreground: #0F172A;
+  --primary: #021E53;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F8FAFC;
+  --secondary-foreground: #021E53;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: #FEAA05;
+  --accent-foreground: #021E53;
+  --destructive: #EF4444;
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #021E53;
+  --chart-1: #021E53;
+  --chart-2: #FEAA05;
+  --chart-3: #10B981;
+  --chart-4: #3B82F6;
+  --chart-5: #8B5CF6;
+  --sidebar: #F8FAFC;
+  --sidebar-foreground: #0F172A;
+  --sidebar-primary: #021E53;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F1F5F9;
+  --sidebar-accent-foreground: #021E53;
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: #021E53;
+}
+
+.dark {
+  --background: #0A0F1E;
+  --foreground: #F8FAFC;
+  --card: #111827;
+  --card-foreground: #F8FAFC;
+  --popover: #111827;
+  --popover-foreground: #F8FAFC;
+  --primary: #3B82F6;
+  --primary-foreground: #FFFFFF;
+  --secondary: #1E293B;
+  --secondary-foreground: #F8FAFC;
+  --muted: #1E293B;
+  --muted-foreground: #94A3B8;
+  --accent: #FEAA05;
+  --accent-foreground: #021E53;
+  --destructive: #EF4444;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #3B82F6;
+  --chart-1: #3B82F6;
+  --chart-2: #FEAA05;
+  --chart-3: #10B981;
+  --chart-4: #8B5CF6;
+  --chart-5: #F43F5E;
+  --sidebar: #111827;
+  --sidebar-foreground: #F8FAFC;
+  --sidebar-primary: #3B82F6;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #1E293B;
+  --sidebar-accent-foreground: #F8FAFC;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #3B82F6;
+}
+
+/* ===== PROFESSIONAL TYPOGRAPHY SYSTEM ===== */
+/*
+  Font Strategy (Institutional Premium):
+  ─────────────────────────────────────────
+  Headings / Brand / Nav / Buttons → IBM Plex Sans Arabic (--font-heading)
+  Body / Paragraphs / Descriptions  → Tajawal (--font-body)
+
+  Visual Hierarchy:
+  ─────────────────
+  H1 Hero        : 4xl–8xl / 800  / leading-[1.05] / tracking-[-0.02em]  ← Powerful & authoritative
+  H2 Section     : 3xl–6xl / 700  / leading-[1.15] / tracking-[-0.015em] ← Confident & refined
+  H2 Page        : 2xl–3xl / 700  / leading-[1.25] / tracking-[-0.01em]  ← Clear & structured
+  H3 Card        : xl–2xl  / 700  / leading-[1.3]  / tracking-[-0.005em] ← Focused & readable
+  H4 Minor       : base–lg / 600  / leading-[1.4]  / tracking-[0]        ← Supporting & balanced
+  Body Large     : lg–xl   / 400  / leading-[1.9]  / tracking-[0.005em]  ← Elegant & spacious
+  Body           : base–lg / 400  / leading-[1.85] / tracking-[0.005em]  ← Comfortable & clear
+  Body Small     : sm      / 400  / leading-[1.75] / tracking-[0.003em]  ← Compact & legible
+  Caption/Label  : xs      / 600  / leading-[1.5]  / tracking-[0.04em]   ← Precise & distinguished
+*/
+
+/* ===== MOBILE FIX: Prevent horizontal overflow ===== */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-body), "Tajawal", sans-serif;
+    font-weight: 400;
+    line-height: 1.85;
+    letter-spacing: 0.005em;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ── Headings: IBM Plex Sans Arabic — Premium Institutional ── */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+  h1 {
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  h2 {
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+  h3 {
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+  }
+  h4 {
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0;
+  }
+
+  /* ── Paragraphs: Tajawal — Premium Readability ── */
+  p {
+    font-family: var(--font-body), "Tajawal", sans-serif;
+    line-height: 1.85;
+    letter-spacing: 0.005em;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  img, svg, video, canvas, audio, iframe, embed, object {
+    max-width: 100%;
+    height: auto;
+  }
+  [dir="rtl"] { text-align: right; }
+  [dir="ltr"] { text-align: left; }
+}
+
+/* ===== MOBILE-SAFE CONTAINER ===== */
+@layer utilities {
+  .container-safe {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+  @media (min-width: 768px) {
+    .container-safe {
+      padding-left: max(1.5rem, env(safe-area-inset-left));
+      padding-right: max(1.5rem, env(safe-area-inset-right));
+    }
+  }
+}
+
+/* ===== PREMIUM SCROLLBAR ===== */
+@layer utilities {
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #021E53, #FEAA05);
+    border-radius: 99px;
+  }
+
+  /* ===== PREMIUM GRADIENT TEXT ===== */
+  .gradient-text {
+    background: linear-gradient(135deg, #021E53 0%, #FEAA05 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .dark .gradient-text {
+    background: linear-gradient(135deg, #3B82F6 0%, #FEAA05 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ===== HERO CINEMATIC OVERLAY — Enhanced Contrast ===== */
+  .hero-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(2, 30, 83, 0.82) 0%,
+      rgba(2, 30, 83, 0.55) 25%,
+      rgba(2, 30, 83, 0.40) 45%,
+      rgba(2, 30, 83, 0.50) 65%,
+      rgba(2, 30, 83, 0.75) 85%,
+      rgba(2, 30, 83, 0.95) 100%
+    );
+  }
+
+  /* ===== TEXT OVER IMAGE — Readability Shield ===== */
+  .text-shield {
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  .text-shield-strong {
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  /* ===== HERO PARTICLE GRID ===== */
+  .hero-grid-pattern {
+    background-image:
+      linear-gradient(rgba(254, 170, 5, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(254, 170, 5, 0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  /* ===== SECTION SEPARATOR ===== */
+  .section-divider {
+    background: linear-gradient(90deg, transparent, #021E53, #FEAA05, #021E53, transparent);
+    height: 2px;
+  }
+
+  /* ===== GOLD SHIMMER ===== */
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .gold-shimmer {
+    background: linear-gradient(90deg, #FEAA05, #FFD700, #FEAA05, #FFD700, #FEAA05);
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  /* ===== FLOATING ANIMATION ===== */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* ===== PREMIUM CARD HOVER ===== */
+  .card-hover {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 20px 40px rgba(2, 30, 83, 0.12),
+      0 8px 16px rgba(2, 30, 83, 0.06);
+  }
+  .dark .card-hover:hover {
+    box-shadow:
+      0 20px 40px rgba(0, 0, 0, 0.3),
+      0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  /* ===== GLASS MORPHISM ===== */
+  .glass {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .glass-light {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  .dark .glass-light {
+    background: rgba(17, 24, 39, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .glass-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  .dark .glass-card {
+    background: rgba(17, 24, 39, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  /* ===== PREMIUM CARD GLASS ===== */
+  .premium-card {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(226, 232, 240, 0.6);
+    box-shadow: 0 1px 3px rgba(2, 30, 83, 0.04), 0 8px 24px rgba(2, 30, 83, 0.06);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .premium-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(2, 30, 83, 0.1), 0 4px 12px rgba(2, 30, 83, 0.05);
+    border-color: rgba(254, 170, 5, 0.3);
+  }
+  .dark .premium-card {
+    background: rgba(17, 24, 39, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+  .dark .premium-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-color: rgba(254, 170, 5, 0.2);
+  }
+
+  /* ===== INFINITE SCROLL ===== */
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes scroll-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+  [dir="rtl"] .infinite-scroll {
+    animation: scroll-right 30s linear infinite;
+  }
+  [dir="ltr"] .infinite-scroll {
+    animation: scroll-left 30s linear infinite;
+  }
+  .infinite-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  /* ===== PREMIUM BUTTON EFFECTS ===== */
+  .btn-premium {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .btn-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    start: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: start 0.5s ease;
+  }
+  .btn-premium:hover::before {
+    start: 100%;
+  }
+
+  /* ===== PULSE RING ===== */
+  @keyframes pulse-ring {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 0; }
+    100% { transform: scale(0.9); opacity: 0; }
+  }
+  .pulse-ring::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: inherit;
+    border: 2px solid currentColor;
+    animation: pulse-ring 2s ease-out infinite;
+  }
+
+  /* ===== SECTION GRADIENT BORDERS ===== */
+  .gradient-border-top {
+    position: relative;
+  }
+  .gradient-border-top::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(2, 30, 83, 0.15), rgba(254, 170, 5, 0.3), rgba(2, 30, 83, 0.15), transparent);
+  }
+
+  /* ===== MASONRY GALLERY ===== */
+  .masonry-grid {
+    columns: 2;
+    column-gap: 10px;
+  }
+  @media (min-width: 640px) {
+    .masonry-grid { columns: 2; column-gap: 14px; }
+  }
+  @media (min-width: 768px) {
+    .masonry-grid { columns: 3; column-gap: 16px; }
+  }
+  @media (min-width: 1024px) {
+    .masonry-grid { columns: 4; column-gap: 20px; }
+  }
+  .masonry-grid > * {
+    break-inside: avoid;
+    margin-bottom: 10px;
+  }
+  @media (min-width: 640px) {
+    .masonry-grid > * { margin-bottom: 14px; }
+  }
+  @media (min-width: 768px) {
+    .masonry-grid > * { margin-bottom: 16px; }
+  }
+  @media (min-width: 1024px) {
+    .masonry-grid > * { margin-bottom: 20px; }
+  }
+
+  /* ===== PREMIUM SECTION SPACING ===== */
+  .section-premium {
+    padding-top: clamp(3rem, 8vw, 7rem);
+    padding-bottom: clamp(3rem, 8vw, 7rem);
+  }
+
+  /* ===== NAVIGATION DROPDOWN ===== */
+  .nav-dropdown {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .nav-item:hover .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* ===== PREMIUM MEGA MENU ===== */
+  .mega-menu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .nav-item:hover .mega-menu,
+  .mega-menu-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* ===== OFF-CANVAS MENU SCROLLBAR ===== */
+  .scrollbar-menu::-webkit-scrollbar {
+    width: 3px;
+  }
+  .scrollbar-menu::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-menu::-webkit-scrollbar-thumb {
+    background: rgba(15, 61, 110, 0.12);
+    border-radius: 99px;
+  }
+  .scrollbar-menu::-webkit-scrollbar-thumb:hover {
+    background: rgba(15, 61, 110, 0.22);
+  }
+
+  /* ===== SMOOTH IMAGE ZOOM ===== */
+  .img-zoom {
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .img-zoom:hover {
+    transform: scale(1.08);
+  }
+
+  /* ===== PREMIUM BADGE PULSE ===== */
+  @keyframes badge-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(254, 170, 5, 0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(254, 170, 5, 0); }
+  }
+  .badge-pulse {
+    animation: badge-pulse 2s ease-in-out infinite;
+  }
+
+  /* ===== COUNTER ANIMATION ===== */
+  @keyframes count-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== SECTION REVEAL ===== */
+  .section-reveal {
+    clip-path: inset(0 0 0 0);
+    transition: clip-path 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* ===== PREMIUM CARD BORDER GLOW ===== */
+  .card-glow {
+    position: relative;
+    overflow: hidden;
+  }
+  .card-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(254,170,5,0.05), transparent);
+    transition: left 0.7s ease;
+  }
+  .card-glow:hover::before {
+    left: 100%;
+  }
+
+  /* ===== SMOOTH SCROLL SNAP FOR MOBILE ===== */
+  @media (max-width: 768px) {
+    .mobile-full-width {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+    }
+  }
+
+  /* ===== PARTNERS SWIPER ===== */
+  .partners-swiper .swiper-wrapper {
+    transition-timing-function: linear !important;
+  }
+
+  /* ===== PAGE HERO BANNER ===== */
+  .page-hero {
+    position: relative;
+    padding: clamp(4rem, 10vw, 8rem) 0;
+    background: linear-gradient(135deg, #021E53 0%, #0A3070 50%, #021E53 100%);
+    overflow: hidden;
+  }
+  .dark .page-hero {
+    background: linear-gradient(135deg, #0A0F1E 0%, #111827 50%, #0A0F1E 100%);
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    start: -20%;
+    width: 80%;
+    height: 200%;
+    background: radial-gradient(ellipse, rgba(254, 170, 5, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .page-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    end: -20%;
+    width: 60%;
+    height: 200%;
+    background: radial-gradient(ellipse, rgba(2, 30, 83, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ===== BREADCRUMB ===== */
+  .breadcrumb-item {
+    transition: color 0.2s ease;
+  }
+  .breadcrumb-item:hover {
+    color: #FEAA05;
+  }
+
+  /* ===== STANDALONE PAGE CONTENT AREA ===== */
+  .page-content-area {
+    min-height: 50vh;
+  }
+
+  /* ===== PREMIUM INSTITUTIONAL CARD — About Pages ===== */
+  .institutional-card {
+    position: relative;
+    border-radius: 1.25rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(226, 232, 240, 0.5);
+    box-shadow:
+      0 1px 2px rgba(2, 30, 83, 0.03),
+      0 4px 16px rgba(2, 30, 83, 0.06),
+      0 12px 40px rgba(2, 30, 83, 0.04);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow: hidden;
+  }
+  @media (min-width: 768px) {
+    .institutional-card {
+      padding: 2.5rem 3rem;
+    }
+  }
+  .institutional-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 4px 8px rgba(2, 30, 83, 0.04),
+      0 12px 32px rgba(2, 30, 83, 0.08),
+      0 24px 64px rgba(2, 30, 83, 0.06);
+    border-color: rgba(254, 170, 5, 0.35);
+  }
+  .dark .institutional-card {
+    background: rgba(17, 24, 39, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.2),
+      0 4px 16px rgba(0, 0, 0, 0.15),
+      0 12px 40px rgba(0, 0, 0, 0.1);
+  }
+  .dark .institutional-card:hover {
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.15),
+      0 12px 32px rgba(0, 0, 0, 0.25),
+      0 24px 64px rgba(0, 0, 0, 0.2);
+    border-color: rgba(254, 170, 5, 0.2);
+  }
+
+  /* ── Gold accent bar at top of institutional card ── */
+  .institutional-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #021E53, #FEAA05, #021E53);
+    border-radius: 1.25rem 1.25rem 0 0;
+    opacity: 0.8;
+    transition: opacity 0.4s ease;
+  }
+  .institutional-card:hover::before {
+    opacity: 1;
+  }
+
+  /* ── Institutional icon container ── */
+  .institutional-icon {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    box-shadow:
+      0 2px 8px rgba(2, 30, 83, 0.08),
+      0 4px 16px rgba(2, 30, 83, 0.04);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  @media (min-width: 768px) {
+    .institutional-icon {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 1.125rem;
+    }
+  }
+  .institutional-card:hover .institutional-icon {
+    transform: scale(1.05);
+    box-shadow:
+      0 4px 12px rgba(2, 30, 83, 0.12),
+      0 8px 24px rgba(2, 30, 83, 0.06);
+  }
+
+  /* ── Icon brand style ── */
+  .institutional-icon-brand {
+    background: linear-gradient(135deg, rgba(2, 30, 83, 0.08) 0%, rgba(2, 30, 83, 0.14) 100%);
+    color: #021E53;
+  }
+  .dark .institutional-icon-brand {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(59, 130, 246, 0.2) 100%);
+    color: #3B82F6;
+  }
+
+  /* ── Icon gold style ── */
+  .institutional-icon-gold {
+    background: linear-gradient(135deg, rgba(254, 170, 5, 0.08) 0%, rgba(254, 170, 5, 0.15) 100%);
+    color: #D99000;
+  }
+
+  /* ── Institutional title ── */
+  .institutional-title {
+    font-family: var(--font-heading), "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--foreground);
+    margin-bottom: 1rem;
+  }
+  @media (min-width: 768px) {
+    .institutional-title {
+      font-size: 2rem;
+    }
+  }
+
+  /* ── Institutional body text ── */
+  .institutional-text {
+    font-family: var(--font-body), "Tajawal", sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 2;
+    letter-spacing: 0.005em;
+    color: var(--muted-foreground);
+    max-width: 100%;
+  }
+  @media (min-width: 768px) {
+    .institutional-text {
+      font-size: 1.2rem;
+      line-height: 2.05;
+    }
+  }
+
+  /* ══════════════════════════════════════════════════════ */
+  /* ===== PROFESSIONAL TYPOGRAPHY UTILITIES             ===== */
+  /* ══════════════════════════════════════════════════════ */
+
+  /* ── Heading Font Family ── */
+  .font-heading {
+    font-family: var(--font-heading), "IBM Plex Sans Arabic", sans-serif;
+  }
+  .font-body {
+    font-family: var(--font-body), "Tajawal", sans-serif;
+  }
+
+  /* ── Premium Heading Styles — Institutional Grade ── */
+  .heading-hero {
+    font-family: var(--font-heading), "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+  .heading-section {
+    font-family: var(--font-heading), "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+  .heading-page {
+    font-family: var(--font-heading), "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+  .heading-card {
+    font-family: var(--font-heading), "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+  .heading-minor {
+    font-family: var(--font-heading), "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ── Premium Body Text Styles — Institutional Grade ── */
+  .body-large {
+    font-family: var(--font-body), "Tajawal", sans-serif;
+    font-weight: 400;
+    line-height: 1.9;
+    letter-spacing: 0.005em;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+  .body-default {
+    font-family: var(--font-body), "Tajawal", sans-serif;
+    font-weight: 400;
+    line-height: 1.85;
+    letter-spacing: 0.005em;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+  .body-small {
+    font-family: var(--font-body), "Tajawal", sans-serif;
+    font-weight: 400;
+    line-height: 1.75;
+    letter-spacing: 0.003em;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+  .body-caption {
+    font-family: var(--font-body), "Tajawal", sans-serif;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ── Button Text Styles — Confident & Clickable ── */
+  .btn-text {
+    font-family: var(--font-heading), "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+  .btn-text-sm {
+    font-family: var(--font-heading), "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ── Navigation Text Styles — Crisp & Authoritative ── */
+  .nav-text {
+    font-family: var(--font-heading), "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+  .nav-text-sm {
+    font-family: var(--font-heading), "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ── Brand Text — Bold Institutional Identity ── */
+  .brand-text {
+    font-family: var(--font-heading), "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+  .brand-sub {
+    font-family: var(--font-heading), "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ── Stat/Number Display — Data with Authority ── */
+  .stat-number {
+    font-family: var(--font-heading), "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "kern" 1, "liga" 1, "tnum" 1;
+    text-rendering: optimizeLegibility;
+  }
+  .stat-label {
+    font-family: var(--font-heading), "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+}

@@ -1,0 +1,55 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Environment
+.env
+.env.local
+.env*.local
+
+# Database
+db/custom.db
+
+# Examples (causes TS errors)
+examples/
+
+# Lock conflicts
+bun.lock
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Archives
+*.rar
+*.zip
+*.7z
+
+# Skills (internal)
+skills/
+
+# Deployment - not needed in repo
+Caddyfile
+next-env.d.ts
+tsconfig.tsbuildinfo
+
+# Scripts with hardcoded paths
+scripts/
+server.log
+dev.log
+
+# Old project directory (files moved to root)
+canteen-website-project/
+
+# Platform internal
+tool-results/
+upload/
+/download/
+worklog.md
