@@ -5,6 +5,7 @@ import { Providers } from "@/components/providers";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { LoadingScreen } from "@/components/ui/loading-screen";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const ibmPlexArabic = IBM_Plex_Sans_Arabic({
   variable: "--font-heading",
@@ -161,6 +162,7 @@ export default function RootLayout({
             <Footer />
           </div>
         </Providers>
+        <SpeedInsights />
       </body>
     </html>
   );
