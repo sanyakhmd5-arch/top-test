@@ -5,6 +5,6 @@ export default function robots() {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://toptest.sa/sitemap.xml",
+    sitemap: "https://toptestfood.com/sitemap.xml",
   };
 }
