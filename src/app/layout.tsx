@@ -21,7 +21,7 @@ const tajawal = Tajawal({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://toptest.sa"),
+  ,metadataBase: new URL("https://toptestfood.com"),
   title: {
     default: "TOP TEST للخدمات الغذائية | School Catering & Hospitality",
     template: "%s | TOP TEST",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     title: "TOP TEST للخدمات الغذائية",
     description:
       "شريككم الموثوق في تقديم أعلى معايير التغذية المدرسية والضيافة وإدارة الفعاليات في المملكة العربية السعودية",
-    url: "https://toptest.sa",
+    https://toptestfood.com,
     siteName: "TOP TEST Food Services",
     type: "website",
     locale: "ar_SA",
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     images: ["/images/logo/logo.png"],
   },
   alternates: {
-    canonical: "https://toptest.sa",
+    canonical: "https://toptestfood.com",
   },
   robots: {
     index: true,
@@ -122,8 +122,8 @@ export default function RootLayout({
               "@type": "Organization",
               name: "TOP TEST Food Services",
               nameAr: "توب تست للخدمات الغذائية",
-              url: "https://toptest.sa",
-              logo: "https://toptest.sa/images/logo/logo.png",
+              url: "https://toptestfood.com",
+              logo: "https://toptestfood.com/images/logo/logo.png",
               description:
                 "شريككم الموثوق في تقديم أعلى معايير التغذية المدرسية والضيافة وإدارة الفعاليات في المملكة العربية السعودية",
               address: {
