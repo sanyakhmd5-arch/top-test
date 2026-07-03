@@ -21,8 +21,8 @@ const tajawal = Tajawal({
 });
 
 export const metadata: Metadata = {
-  ,metadataBase: new URL("https://toptestfood.com"),
-  title: {
+  metadataBase: new URL("https://toptestfood.com"),
+  title:
     default: "TOP TEST للخدمات الغذائية | School Catering & Hospitality",
     template: "%s | TOP TEST",
   },
