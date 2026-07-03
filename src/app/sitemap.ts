@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = "https://toptest.sa";
+const baseUrl = "https://toptestfood.com";
 
   const staticPages = [
     { url: baseUrl, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 1 },
