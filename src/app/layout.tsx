@@ -22,10 +22,10 @@ const tajawal = Tajawal({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://toptestfood.com"),
-  title:
-    default: "TOP TEST للخدمات الغذائية | School Catering & Hospitality",
-    template: "%s | TOP TEST",
-  },
+ title: {
+  default: "TOP TEST للخدمات الغذائية | School Catering & Hospitality",
+  template: "%s | TOP TEST",
+},
   description:
     "توب تست للخدمات الغذائية — شريككم الموثوق في تقديم أعلى معايير التغذية المدرسية والضيافة وإدارة الفعاليات في المملكة العربية السعودية. TOP TEST Food Services - Your trusted partner in school catering, hospitality, and event management.",
   keywords: [
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     title: "TOP TEST للخدمات الغذائية",
     description:
       "شريككم الموثوق في تقديم أعلى معايير التغذية المدرسية والضيافة وإدارة الفعاليات في المملكة العربية السعودية",
-    https://toptestfood.com,
+    url: "https://toptestfood.com",
     siteName: "TOP TEST Food Services",
     type: "website",
     locale: "ar_SA",
